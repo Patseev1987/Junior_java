@@ -1,6 +1,5 @@
 package org.example.lesson2;
 
-import ru.gb.lesson1.Streams;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
