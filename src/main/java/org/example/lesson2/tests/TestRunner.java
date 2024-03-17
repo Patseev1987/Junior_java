@@ -50,8 +50,6 @@ public class TestRunner {
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
 
@@ -78,7 +76,7 @@ public class TestRunner {
                     continue;
                 }
                 if (testMethod.getAnnotation(Test.class) != null) {
-                    int key = testMethod.getAnnotation(Test.class).value();
+                    int key = testMethod.getAnnotation(Test.class).order();
                     ArrayList<Method> methodsList;
                     if (result.containsKey(key)) {
                         methodsList = result.get(key);
@@ -91,7 +89,6 @@ public class TestRunner {
             }
             return result;
         }
-
     }
 
 
