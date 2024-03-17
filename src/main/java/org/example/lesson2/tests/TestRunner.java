@@ -7,6 +7,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class TestRunner {
 
@@ -15,8 +17,8 @@ public class TestRunner {
         Helper helper = new Helper();
 
 
-        Method[] methodsWithAnnotationTest = helper.getMethodsWithAnnotation(testClass.getDeclaredMethods(),
-                Test.class);
+        Map<Integer,ArrayList<Method>> methodsWithAnnotationTest =
+                helper.getMethodsWithAnnotationTestWithValue(testClass.getDeclaredMethods());
         Method[] methodsWithAnnotationBeforeEach = helper.getMethodsWithAnnotation(testClass.getDeclaredMethods(),
                 BeforeEach.class);
         Method[] methodsWithAnnotationBeforeAll = helper.getMethodsWithAnnotation(testClass.getDeclaredMethods(),
@@ -30,15 +32,16 @@ public class TestRunner {
             for (Method methodBeforeAll : methodsWithAnnotationBeforeAll) {
                 methodBeforeAll.invoke(testObj);
             }
-            for (Method methodTest : methodsWithAnnotationTest) {
-                for (Method methodBeforeEach : methodsWithAnnotationBeforeEach) {
-                    methodBeforeEach.invoke(testObj);
-                }
 
-                methodTest.invoke(testObj);
-
-                for (Method methodAfterEach : methodsWithAnnotationAfterEach) {
-                    methodAfterEach.invoke(testObj);
+            for (var methodTest : methodsWithAnnotationTest.entrySet()) {
+                for (var method :methodTest.getValue()) {
+                    for (Method methodBeforeEach : methodsWithAnnotationBeforeEach) {
+                        methodBeforeEach.invoke(testObj);
+                    }
+                    method.invoke(testObj);
+                    for (Method methodAfterEach : methodsWithAnnotationAfterEach) {
+                        methodAfterEach.invoke(testObj);
+                    }
                 }
             }
             for (Method methodAfterAll : methodsWithAnnotationAfterAll) {
@@ -55,16 +58,40 @@ public class TestRunner {
     private static class Helper {
         private Method[] getMethodsWithAnnotation(Method[] declaredMethods, Class<? extends Annotation> targetAnnatationClass) {
             List<Method> result = new ArrayList<>();
-            for (Method testMethod : declaredMethods) {
-                if (testMethod.accessFlags().contains(AccessFlag.PRIVATE)) {
+            for (Method method : declaredMethods) {
+                if (method.accessFlags().contains(AccessFlag.PRIVATE)) {
                     continue;
                 }
-                if (testMethod.getAnnotation(targetAnnatationClass) != null) {
-                    result.add(testMethod);
+                if (method.getAnnotation(targetAnnatationClass) != null) {
+                    result.add(method);
                 }
             }
             return result.toArray(Method[]::new);
         }
+
+
+
+        private Map<Integer,ArrayList<Method>> getMethodsWithAnnotationTestWithValue(Method[] declaredMethods) {
+            Map<Integer,ArrayList<Method>> result = new TreeMap<>();
+            for (Method testMethod : declaredMethods) {
+                if (testMethod.accessFlags().contains(AccessFlag.PRIVATE)) {
+                    continue;
+                }
+                if (testMethod.getAnnotation(Test.class) != null) {
+                    int key = testMethod.getAnnotation(Test.class).value();
+                    ArrayList<Method> methodsList;
+                    if (result.containsKey(key)) {
+                        methodsList = result.get(key);
+                    }else {
+                        methodsList = new ArrayList<>();
+                    }
+                    methodsList.add(testMethod);
+                    result.put(key,methodsList);
+                }
+            }
+            return result;
+        }
+
     }
 
 

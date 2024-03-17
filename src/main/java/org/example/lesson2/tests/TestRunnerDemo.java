@@ -50,12 +50,12 @@ public class TestRunnerDemo {
   }
 
 
-  @Test
+  @Test (2)
   private void test1() {
     System.out.println("test1");
   }
 
- @Test
+ @Test(1)
   void test2() {
     System.out.println("test2");
   }
@@ -63,6 +63,22 @@ public class TestRunnerDemo {
   @Test
   void test3() {
     System.out.println("test3");
+  }
+  @Test(10)
+  void test4() {
+    System.out.println("test4");
+  }
+  @Test(2)
+  void test5() {
+    System.out.println("test5");
+  }
+  @Test
+  void test6() {
+    System.out.println("test6");
+  }
+  @Test(5)
+  void test7() {
+    System.out.println("test7");
   }
 
 }
