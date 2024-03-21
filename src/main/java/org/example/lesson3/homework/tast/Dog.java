@@ -2,8 +2,9 @@ package org.example.lesson3.homework.tast;
 
 import org.example.lesson3.homework.annotations.Column;
 import org.example.lesson3.homework.annotations.Id;
+import org.example.lesson3.homework.annotations.Table;
 
-
+@Table(name = "dogs")
 public class Dog {
     @Id
     @Column(name = "AGE")

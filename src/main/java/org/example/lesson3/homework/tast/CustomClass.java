@@ -2,6 +2,7 @@ package org.example.lesson3.homework.tast;
 
 import org.example.lesson3.homework.annotations.Column;
 import org.example.lesson3.homework.annotations.Id;
+import org.example.lesson3.homework.annotations.Table;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -33,6 +34,14 @@ public class CustomClass {
             result.add(customField);
         }
         return result;
+    }
+
+
+    public static String getTableName(Object target){
+        if (target.getClass().getDeclaredAnnotation(Table.class) != null){
+            return target.getClass().getDeclaredAnnotation(Table.class).name();
+        }
+        throw new RuntimeException("Table name wasn't found");
     }
 
 

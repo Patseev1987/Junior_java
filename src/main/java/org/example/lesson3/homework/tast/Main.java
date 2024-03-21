@@ -1,5 +1,6 @@
 package org.example.lesson3.homework.tast;
 
+import org.example.lesson3.homework.Student;
 import org.example.lesson3.homework.annotations.Column;
 
 import java.lang.reflect.InvocationTargetException;
@@ -23,5 +24,15 @@ public class Main {
 
         var lll = CustomClass.getFieldsInformation(dog);
         System.out.println(lll);
+
+        System.out.println(SQLRequest.getSQLRequestForSaveInstance(dog));
+
+        Student student = new Student();
+        student.setId(1);
+        student.setAge(40);
+        student.setFirstName("Kooo");
+        student.setSecondName("MMM");
+
+        System.out.println(SQLRequest.getSQLRequestForSaveInstance(student));
     }
 }
