@@ -44,7 +44,7 @@ public class CustomSQLMapper {
             if (getFieldsWithAnnotation(target.getDeclaredFields(), Id.class).size() > 1) {
                 throw new RuntimeException("Field with id should be only one!");
             } else {
-                return getFieldsWithAnnotation(target.getDeclaredFields(), Id.class).getFirst();
+                return getFieldsWithAnnotation(target.getDeclaredFields(), Id.class).get(0);
             }
         }
 
