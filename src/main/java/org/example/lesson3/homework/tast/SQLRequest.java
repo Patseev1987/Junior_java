@@ -37,5 +37,22 @@ public class SQLRequest {
         }
         return sb.toString();
     }
+
+    public static String getSQLRequestForGettingInstance(Object object) throws InvocationTargetException, IllegalAccessException {
+        StringBuilder sb = new StringBuilder();
+        sb.append("select * from ");
+        sb.append(CustomClass.getTableName(object)).append(" where ");
+
+        var customFields = CustomClass.getFieldsInformation(object);
+        for (var field:customFields){
+            if (field.getIdField()){
+                sb.append(field.getColumnName());
+                sb.append(" = ");
+                sb.append(field.getValueInStringType());
+                return sb.toString();
+            }
+        }
+        throw new RuntimeException("field with annotation '@Id' wasn't found");
+    }
 }
 

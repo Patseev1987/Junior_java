@@ -28,11 +28,17 @@ public class Main {
         System.out.println(SQLRequest.getSQLRequestForSaveInstance(dog));
 
         Student student = new Student();
-        student.setId(1);
+        student.setId(5);
         student.setAge(40);
         student.setFirstName("Kooo");
         student.setSecondName("MMM");
 
         System.out.println(SQLRequest.getSQLRequestForSaveInstance(student));
+
+        System.out.println(SQLRequest.getSQLRequestForGettingInstance(student));
+
+
+
+
     }
 }
