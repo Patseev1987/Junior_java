@@ -30,7 +30,11 @@ public class CustomClass {
             customField.setSetter(setter);
             customField.setColumnName(getNameColumnName(field));
             customField.setIdField(isIdField(field));
-            customField.setValueInStringType(getter.invoke(target).toString());
+            if (field.getType().equals(String.class)){
+                customField.setValueInStringType("'"+getter.invoke(target).toString()+"'");
+            }else {
+                customField.setValueInStringType(getter.invoke(target).toString());
+            }
             result.add(customField);
         }
         return result;

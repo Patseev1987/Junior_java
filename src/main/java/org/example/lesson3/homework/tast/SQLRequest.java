@@ -3,7 +3,7 @@ package org.example.lesson3.homework.tast;
 import java.lang.reflect.InvocationTargetException;
 
 public class SQLRequest {
-    static String getSQLRequestForSaveInstance(Object object) throws InvocationTargetException, IllegalAccessException {
+   public static  String getSQLRequestForSaveInstance(Object object) throws InvocationTargetException, IllegalAccessException {
         StringBuilder sb = new StringBuilder();
         sb.append("insert into ");
         sb.append(CustomClass.getTableName(object));

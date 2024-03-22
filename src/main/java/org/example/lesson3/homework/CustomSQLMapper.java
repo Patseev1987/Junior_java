@@ -29,7 +29,17 @@ public class CustomSQLMapper {
     }
 
 
-
+        public void saveObjectIntoDatabase(Object object){
+        try(Statement statement = connection.createStatement()) {
+            statement.executeUpdate(
+                    SQLRequest.getSQLRequestForSaveInstance(object)
+            );
+        } catch (SQLException
+                 | InvocationTargetException
+                 | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        }
 
     private  <T> T getObjectFromDatabase(T object) {
         try (Statement statement = connection.createStatement()) {

@@ -1,5 +1,8 @@
 package org.example.lesson3.homework.task1;
 
+import org.example.lesson3.homework.CustomSQLMapper;
+import org.example.lesson3.homework.Student;
+
 import java.sql.*;
 import java.util.*;
 
@@ -14,6 +17,16 @@ public class MySqlJDBC {
                 "Root1234")) {
 
             acceptConnection(connection);
+            CustomSQLMapper customSQLMapper = new CustomSQLMapper(connection);
+
+            Student student = new Student();
+            student.setAge(27);
+            student.setFirstName("Igor");
+            student.setSecondName("Lock");
+
+            customSQLMapper.saveObjectIntoDatabase(student);
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

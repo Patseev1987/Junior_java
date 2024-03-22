@@ -33,6 +33,12 @@ public class Main {
         student.setFirstName("Kooo");
         student.setSecondName("MMM");
 
+        Student student2 = new Student();
+        student2.setAge(27);
+        student2.setFirstName("Igor");
+        student2.setSecondName("Lock");
+
+        System.out.println(SQLRequest.getSQLRequestForSaveInstance(student2));
         System.out.println(SQLRequest.getSQLRequestForSaveInstance(student));
 
         System.out.println(SQLRequest.getSQLRequestForGettingInstance(student));
