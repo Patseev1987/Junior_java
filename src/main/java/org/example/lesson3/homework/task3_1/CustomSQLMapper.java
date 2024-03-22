@@ -1,25 +1,14 @@
-package org.example.lesson3.homework;
+package org.example.lesson3.homework.task3_1;
 
-import org.example.lesson3.homework.annotations.Column;
-import org.example.lesson3.homework.annotations.Id;
-import org.example.lesson3.homework.annotations.Table;
-import org.example.lesson3.homework.tast.CustomClass;
-import org.example.lesson3.homework.tast.CustomField;
-import org.example.lesson3.homework.tast.Dog;
-import org.example.lesson3.homework.tast.SQLRequest;
+import org.example.lesson3.homework.task3_1.CustomClass;
+import org.example.lesson3.homework.task3_1.CustomField;
+import org.example.lesson3.homework.task3_1.SQLRequest;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.AccessFlag;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class CustomSQLMapper {
     private Connection connection;

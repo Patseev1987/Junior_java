@@ -1,7 +1,7 @@
 package org.example.lesson3.homework.task1;
 
-import org.example.lesson3.homework.CustomSQLMapper;
-import org.example.lesson3.homework.Student;
+import org.example.lesson3.homework.task3_1.CustomSQLMapper;
+import org.example.lesson3.homework.task3_1.Student;
 
 import java.sql.*;
 import java.util.*;

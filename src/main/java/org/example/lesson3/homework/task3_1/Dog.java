@@ -1,4 +1,4 @@
-package org.example.lesson3.homework.tast;
+package org.example.lesson3.homework.task3_1;
 
 import org.example.lesson3.homework.annotations.Column;
 import org.example.lesson3.homework.annotations.Id;

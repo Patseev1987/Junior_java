@@ -1,6 +1,4 @@
-package org.example.lesson3.homework.tast;
-
-import lombok.Data;
+package org.example.lesson3.homework.task3_1;
 
 import java.lang.reflect.Method;
 

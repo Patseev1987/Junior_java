@@ -1,4 +1,4 @@
-package org.example.lesson3.homework;
+package org.example.lesson3.homework.task3_1;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,17 +7,17 @@ import org.example.lesson3.homework.annotations.Id;
 import org.example.lesson3.homework.annotations.Table;
 
 
-@Table (name ="students")
+@Table(name = "students")
 public class Student {
     @Id
-    @Column (name = "id")
-    int id;
+    @Column(name = "id")
+    private int id;
     @Column(name = "first_name")
-    String firstName;
-    @Column( name = "second_name")
-    String secondName;
-    @Column( name = "age")
-    int age;
+    private String firstName;
+    @Column(name = "second_name")
+    private String secondName;
+    @Column(name = "age")
+    private int age;
 
     public int getId() {
         return id;
