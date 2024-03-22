@@ -19,7 +19,6 @@ public class Main {
             student.setAge(33);
             student.setFirstName("Nick");
             student.setSecondName("Rock");
-
             customSQLMapper.saveObjectIntoDatabase(student);
 
         } catch (SQLException e) {
