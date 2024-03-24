@@ -15,7 +15,9 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.0")
     testImplementation("com.h2database:h2:2.2.224")
     implementation("mysql:mysql-connector-java:8.0.33")
-    compileOnly("org.projectlombok:lombok:1.18.30")
+    compileOnly("org.projectlombok:lombok:1.18.32")
+
+    implementation("org.hibernate.orm:hibernate-core:6.4.4.Final")
 
 
 }
